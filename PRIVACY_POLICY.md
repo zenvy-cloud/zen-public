@@ -1,4 +1,4 @@
-# Privacy Policy â€” Zen
+# Privacy Policy for Zen
 
 **Last updated: March 18, 2026**
 **App:** Zen (`com.zenvy.com`)
