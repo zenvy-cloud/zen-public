@@ -1,8 +1,8 @@
 # Privacy Policy - Zen
 
 **Last updated: March 18, 2026**
-**App:** Zen (`com.zenvy.com`)
-**Developer:** Zenvy Cloud
+**App:** Zen (`com.zenvytechno.zen`)
+**Developer:** Zenvytechno
 **Contact:** privacy@zenvytechno.com
 
 ---
@@ -39,19 +39,22 @@ This data is stored locally on your device and synced to Firebase Firestore unde
 
 Task data is stored in Firebase Firestore and shared between participants (creator and assignee) to enable real-time collaboration.
 
-### 2.4 SMS Text *(optional - user-initiated only)*
-The app can parse an SMS message to help you log an expense quickly. This works in two ways:
+### 2.4 Expense Entry Methods
 
-- **Manual paste** - you open the app and paste an SMS text yourself into the SMS entry screen
-- **Share from messaging app** - you share an SMS from your messaging app to Zen; the app shows you the parsed result and you confirm before anything is saved
+Zen supports several ways to log an expense. In every method **you initiate the action**, you see the result before it is saved, and raw source data (SMS text, receipt image, bank statement) is never sent to our servers — only the structured expense fields you confirm are stored.
 
-In both cases: **you initiate the action**, you see the parsed result before it is saved, and the raw SMS text is never sent to our servers. Only the structured expense fields you confirm (amount, merchant, date, category) are saved to your account.
+- **Manual entry** - you fill in the amount, merchant, category, and other fields directly in the app
+- **SMS paste** - you open the app and paste a bank transaction SMS yourself; the app parses it and you confirm the result
+- **SMS share** - you share an SMS from your messaging app to Zen; the parsed result is shown for your confirmation before anything is saved
+- **Receipt / bill scan** *(requires Camera permission)* - you photograph a receipt; text is extracted on-device using OCR (Google ML Kit) to auto-fill the expense form
+- **Bank statement import (CSV or PDF)** - you upload a bank statement file from your device; transactions are parsed locally and you review them before import; PDF passwords (if any) are used on-device only and never stored
+- **File share** - you share a PDF or image from another app; Zen opens it in the import review screen for your confirmation
 
 ### 2.5 Contacts *(optional - requires Contacts permission)*
 Contact names and phone numbers are read from your device to help you select friends when splitting an expense or assigning a task. When you add a contact as a participant in a split or task, their name and phone number are saved to our backend to enable matching and collaboration features. Contacts are not bulk-uploaded — only contacts you explicitly interact with inside the app are stored on our servers.
 
 ### 2.6 Camera and Photos *(optional - requires Camera permission)*
-If you photograph receipts, images are stored locally. If you back up your data, images are stored in your own Google Drive. Images are also processed on-device for OCR (text extraction to auto-fill expense fields).
+If you photograph receipts or attach images to expenses, those images are stored locally on your device. If you enable backup, images are stored in your own Google Drive — not on our servers. OCR (text extraction) is performed on-device; images are not uploaded to us.
 
 ### 2.7 Usage Analytics
 We collect anonymous, aggregated usage events via Firebase Analytics:
@@ -77,7 +80,7 @@ Your Firebase Cloud Messaging (FCM) device token is stored in Firestore to deliv
 | Email / phone / name | Create and manage your account; identify you in shared expenses and tasks |
 | Financial data (expenses, splits) | Core app functionality - tracking, splitting, settling |
 | Task data | Core app functionality - creating, assigning, and tracking collaborative tasks |
-| SMS text (user-initiated) | Parse expense details (amount, merchant, date) that you choose to log; raw text stays on-device |
+| SMS text / receipt image / bank statement (user-initiated) | Parse expense details (amount, merchant, date) that you choose to log; raw source data stays on-device |
 | Contacts | Suggest friends when creating a split or assigning a task; store participants you interact with |
 | Receipt photos | Attach to expenses; OCR auto-fill of amount and merchant |
 | Analytics events | Understand how features are used; improve the app |
@@ -121,7 +124,7 @@ We may disclose information if required by law, court order, or to protect the r
 ## 5. Data We Do NOT Collect
 
 - Notification content from your bank or payment apps - we do not read or access notifications in the background
-- SMS messages in the background - SMS text is only processed when you explicitly share or paste it yourself
+- SMS messages in the background - SMS text, receipt images, and bank statement files are only processed when you explicitly initiate the action yourself
 - Advertising identifiers (AD_ID permission is explicitly removed from the app)
 - Browsing history or cross-app tracking data
 - Any data from children under 13 (intentionally)
@@ -213,7 +216,7 @@ Zen handles financial and personal data. While we follow industry-standard secur
 
 ## 12. Contact Us
 
-**Zenvy Cloud**
+**Zenvytechno**
 Email: privacy@zenvytechno.com
 Support: support@zenvytechno.com
 GitHub: [github.com/zenvy-cloud](https://github.com/zenvy-cloud)
@@ -222,4 +225,4 @@ For data requests, GDPR enquiries, or CCPA requests, email privacy@zenvytechno.c
 
 ---
 
-*This privacy policy applies to the Zen Android app (`com.zenvy.com`) distributed on Google Play.*
+*This privacy policy applies to the Zen Android app (`com.zenvytechno.zen`) distributed on Google Play.*
