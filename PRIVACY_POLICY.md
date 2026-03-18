@@ -9,9 +9,9 @@
 
 ## 1. Introduction
 
-Zen is a personal finance app that helps you track expenses, split costs with friends, and settle payments. This Privacy Policy explains exactly what data we collect, why we collect it, how we use and share it, and how we protect it.
+Zen is a personal finance and productivity app that helps you track expenses, split costs with friends, settle payments, and collaborate on tasks with the people around you. This Privacy Policy explains exactly what data we collect, why we collect it, how we use and share it, and how we protect it.
 
-We built Zen on a simple principle: **your financial data belongs to you**. We collect only what is necessary to make the app work.
+We built Zen on a simple principle: **your data belongs to you**. We collect only what is necessary to make the app work.
 
 By using Zen, you agree to the practices described in this policy. If you do not agree, please do not use the app.
 
@@ -22,9 +22,9 @@ By using Zen, you agree to the practices described in this policy. If you do not
 We collect information in the following ways: directly from you when you use the app, automatically through the services we use, and optionally through device permissions you choose to grant.
 
 ### 2.1 Account Information
-- **Email address** - when you sign up with email/password
-- **Phone number** - when you sign in via OTP; also used to match you with contacts in split expenses
-- **Display name and profile photo** - sourced from your Google account if you sign in with Google
+- **Email address** - when you sign up with email/password or Google
+- **Phone number** - used to identify your account and to match you with contacts in split expenses and collaborative tasks
+- **Display name and profile photo** - sourced from your Google account if you sign in with Google, or set by you during onboarding
 
 ### 2.2 Financial Data
 - **Expenses** - amount, merchant/description, category, date, payment method, notes, receipt photos
@@ -33,7 +33,13 @@ We collect information in the following ways: directly from you when you use the
 
 This data is stored locally on your device and synced to Firebase Firestore under your account.
 
-### 2.3 SMS Text *(optional - user-initiated only)*
+### 2.3 Task Data
+- **Tasks** - title, description, status, priority, due date, assignee, and checklist items
+- **Task activity** - who created a task, who it is assigned to, and status changes (accepted, started, completed, declined)
+
+Task data is stored in Firebase Firestore and shared between participants (creator and assignee) to enable real-time collaboration.
+
+### 2.4 SMS Text *(optional - user-initiated only)*
 The app can parse an SMS message to help you log an expense quickly. This works in two ways:
 
 - **Manual paste** - you open the app and paste an SMS text yourself into the SMS entry screen
@@ -41,26 +47,26 @@ The app can parse an SMS message to help you log an expense quickly. This works 
 
 In both cases: **you initiate the action**, you see the parsed result before it is saved, and the raw SMS text is never sent to our servers. Only the structured expense fields you confirm (amount, merchant, date, category) are saved to your account.
 
-### 2.4 Contacts *(optional - requires Contacts permission)*
-Contact names and phone numbers are read to help you select friends when splitting an expense. Contacts are used in-app only and are never uploaded to our servers.
+### 2.5 Contacts *(optional - requires Contacts permission)*
+Contact names and phone numbers are read from your device to help you select friends when splitting an expense or assigning a task. When you add a contact as a participant in a split or task, their name and phone number are saved to our backend to enable matching and collaboration features. Contacts are not bulk-uploaded — only contacts you explicitly interact with inside the app are stored on our servers.
 
-### 2.5 Camera and Photos *(optional - requires Camera permission)*
+### 2.6 Camera and Photos *(optional - requires Camera permission)*
 If you photograph receipts, images are stored locally. If you back up your data, images are stored in your own Google Drive. Images are also processed on-device for OCR (text extraction to auto-fill expense fields).
 
-### 2.6 Usage Analytics
+### 2.7 Usage Analytics
 We collect anonymous, aggregated usage events via Firebase Analytics:
 - Screen views and navigation flows
-- Feature usage (expense added, split created, settlement completed)
+- Feature usage (expense added, split created, settlement completed, task created)
 - Authentication method chosen
 - App errors and crash signals
 
-Analytics data does **not** include your financial amounts, merchant names, or contact information.
+Analytics help us understand how the app is used and where to focus improvements. The scope of analytics may expand as the app grows; this policy will be updated to reflect any meaningful changes.
 
-### 2.7 Device Information
+### 2.8 Device Information
 Firebase automatically collects basic device information (device model, OS version, app version, language) to provide analytics and improve app stability. This is not linked to your personal identity.
 
-### 2.8 Push Notification Tokens
-Your Firebase Cloud Messaging (FCM) device token is stored in Firestore to deliver push notifications (settlement reminders, incoming settlement alerts) to your device.
+### 2.9 Push Notification Tokens
+Your Firebase Cloud Messaging (FCM) device token is stored in Firestore to deliver push notifications (settlement reminders, task assignments, task status updates) to your device.
 
 ---
 
@@ -68,14 +74,15 @@ Your Firebase Cloud Messaging (FCM) device token is stored in Firestore to deliv
 
 | Information | Purpose |
 |---|---|
-| Email / phone / name | Create and manage your account; identify you in shared expenses |
+| Email / phone / name | Create and manage your account; identify you in shared expenses and tasks |
 | Financial data (expenses, splits) | Core app functionality - tracking, splitting, settling |
+| Task data | Core app functionality - creating, assigning, and tracking collaborative tasks |
 | SMS text (user-initiated) | Parse expense details (amount, merchant, date) that you choose to log; raw text stays on-device |
-| Contacts | Suggest friends when creating a split expense |
+| Contacts | Suggest friends when creating a split or assigning a task; store participants you interact with |
 | Receipt photos | Attach to expenses; OCR auto-fill of amount and merchant |
 | Analytics events | Understand how features are used; improve the app |
 | Device info | Crash reporting and stability improvements |
-| FCM token | Deliver settlement reminders and payment notifications |
+| FCM token | Deliver settlement reminders, task assignment alerts, and status notifications |
 | Expense history (anonymised, opt-in) | Generate AI spending insights via Google Gemini when you request it |
 
 We do **not** use your data for advertising, profiling, or selling to third parties.
@@ -87,7 +94,7 @@ We do **not** use your data for advertising, profiling, or selling to third part
 We do not sell your personal data. We share data only in the following limited circumstances:
 
 **With other Zen users you choose to interact with:**
-When you split an expense or settle a payment with a contact, your display name, phone number, and the relevant expense details are shared with that contact within the app.
+When you split an expense, settle a payment, or collaborate on a task with a contact, your display name, phone number, and the relevant expense or task details are shared with that contact within the app.
 
 **With our service providers (processors):**
 We use the following third-party services that process data on our behalf. Each is contractually bound to use your data only to provide their service to us.
@@ -95,7 +102,7 @@ We use the following third-party services that process data on our behalf. Each 
 | Service | Provider | Data shared | Purpose |
 |---|---|---|---|
 | Firebase Auth | Google | Email, phone, UID | Authentication |
-| Firebase Firestore | Google | Expenses, splits, user profile | Cloud data sync |
+| Firebase Firestore | Google | Expenses, splits, tasks, user profile, contacts | Cloud data sync |
 | Firebase Analytics | Google | Anonymous usage events | App analytics |
 | Firebase Cloud Messaging | Google | FCM device token | Push notifications |
 | Google Sign-In | Google | Email, name, profile photo | Authentication |
@@ -115,7 +122,6 @@ We may disclose information if required by law, court order, or to protect the r
 
 - Notification content from your bank or payment apps - we do not read or access notifications in the background
 - SMS messages in the background - SMS text is only processed when you explicitly share or paste it yourself
-- Your precise or approximate location
 - Advertising identifiers (AD_ID permission is explicitly removed from the app)
 - Browsing history or cross-app tracking data
 - Any data from children under 13 (intentionally)
@@ -201,7 +207,7 @@ Continued use of the app after an update constitutes acceptance of the revised p
 
 ## 11. Legal Notice
 
-Zen handles financial data. While we follow industry-standard security practices, this policy does not constitute legal advice. If you are deploying this app in a regulated context, we recommend consulting a qualified legal professional familiar with data protection laws in your jurisdiction.
+Zen handles financial and personal data. While we follow industry-standard security practices, this policy does not constitute legal advice. If you are deploying this app in a regulated context, we recommend consulting a qualified legal professional familiar with data protection laws in your jurisdiction.
 
 ---
 
