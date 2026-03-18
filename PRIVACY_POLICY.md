@@ -1,4 +1,4 @@
-# Privacy Policy — Zen
+# Privacy Policy â€” Zen
 
 **Last updated: March 18, 2026**
 **App:** Zen (`com.zenvy.com`)
@@ -22,28 +22,29 @@ By using Zen, you agree to the practices described in this policy. If you do not
 We collect information in the following ways: directly from you when you use the app, automatically through the services we use, and optionally through device permissions you choose to grant.
 
 ### 2.1 Account Information
-- **Email address** — when you sign up with email/password
-- **Phone number** — when you sign in via OTP; also used to match you with contacts in split expenses
-- **Display name and profile photo** — sourced from your Google account if you sign in with Google
+- **Email address** â€” when you sign up with email/password
+- **Phone number** â€” when you sign in via OTP; also used to match you with contacts in split expenses
+- **Display name and profile photo** â€” sourced from your Google account if you sign in with Google
 
 ### 2.2 Financial Data
-- **Expenses** — amount, merchant/description, category, date, payment method, notes, receipt photos
-- **Splits** — who paid, how much each person owes, settlement status
-- **Settlements** — payment records between you and your contacts
+- **Expenses** â€” amount, merchant/description, category, date, payment method, notes, receipt photos
+- **Splits** â€” who paid, how much each person owes, settlement status
+- **Settlements** â€” payment records between you and your contacts
 
 This data is stored locally on your device and synced to Firebase Firestore under your account.
 
-### 2.3 Transaction Notifications *(optional — requires Notification Access permission)*
-If you grant Notification Access, the app reads financial transaction notifications from your bank and payment apps (e.g., UPI apps) to automatically detect and log expenses.
+### 2.3 SMS Text *(optional â€” user-initiated only)*
+The app can parse an SMS message to help you log an expense quickly. This works in two ways:
 
-- Only notifications containing financial keywords (debited, credited, paid, txn, INR) are processed
-- Chat app notifications (WhatsApp, Telegram, Instagram, etc.) are explicitly skipped
-- Notification content stays on your device and is never sent to our servers
+- **Manual paste** â€” you open the app and paste an SMS text yourself into the SMS entry screen
+- **Share from messaging app** â€” you share an SMS from your messaging app to Zen; the app shows you the parsed result and you confirm before anything is saved
 
-### 2.4 Contacts *(optional — requires Contacts permission)*
+In both cases: **you initiate the action**, you see the parsed result before it is saved, and the raw SMS text is never sent to our servers. Only the structured expense fields you confirm (amount, merchant, date, category) are saved to your account.
+
+### 2.4 Contacts *(optional â€” requires Contacts permission)*
 Contact names and phone numbers are read to help you select friends when splitting an expense. Contacts are used in-app only and are never uploaded to our servers.
 
-### 2.5 Camera and Photos *(optional — requires Camera permission)*
+### 2.5 Camera and Photos *(optional â€” requires Camera permission)*
 If you photograph receipts, images are stored locally. If you back up your data, images are stored in your own Google Drive. Images are also processed on-device for OCR (text extraction to auto-fill expense fields).
 
 ### 2.6 Usage Analytics
@@ -68,8 +69,8 @@ Your Firebase Cloud Messaging (FCM) device token is stored in Firestore to deliv
 | Information | Purpose |
 |---|---|
 | Email / phone / name | Create and manage your account; identify you in shared expenses |
-| Financial data (expenses, splits) | Core app functionality — tracking, splitting, settling |
-| Transaction notifications | Auto-log expenses from bank notifications without manual entry |
+| Financial data (expenses, splits) | Core app functionality â€” tracking, splitting, settling |
+| SMS text (user-initiated) | Parse expense details (amount, merchant, date) that you choose to log; raw text stays on-device |
 | Contacts | Suggest friends when creating a split expense |
 | Receipt photos | Attach to expenses; OCR auto-fill of amount and merchant |
 | Analytics events | Understand how features are used; improve the app |
@@ -101,7 +102,7 @@ We use the following third-party services that process data on our behalf. Each 
 | Google Drive API | Google | AES-256 encrypted backup files | Backup storage in your Drive |
 | Google Gemini API | Google | Anonymised expense amounts and categories | AI spending insights (opt-in only) |
 
-Links to their privacy policies: [Firebase](https://firebase.google.com/support/privacy) · [Google](https://policies.google.com/privacy) · [Gemini API](https://ai.google.dev/gemini-api/terms)
+Links to their privacy policies: [Firebase](https://firebase.google.com/support/privacy) Â· [Google](https://policies.google.com/privacy) Â· [Gemini API](https://ai.google.dev/gemini-api/terms)
 
 **For legal reasons:**
 We may disclose information if required by law, court order, or to protect the rights and safety of our users or the public.
@@ -112,7 +113,8 @@ We may disclose information if required by law, court order, or to protect the r
 
 ## 5. Data We Do NOT Collect
 
-- SMS message content (we use the Notification Listener API, not SMS)
+- Notification content from your bank or payment apps â€” we do not read or access notifications in the background
+- SMS messages in the background â€” SMS text is only processed when you explicitly share or paste it yourself
 - Your precise or approximate location
 - Advertising identifiers (AD_ID permission is explicitly removed from the app)
 - Browsing history or cross-app tracking data
@@ -149,23 +151,22 @@ We do not claim that any system is 100% secure. If you discover a security issue
 
 You have the following rights regardless of where you are located:
 
-- **Access** — view all your data through the app's expense history and profile screens
-- **Export** — export your data as CSV or PDF via Profile → Export
-- **Delete** — delete your account via Profile → Settings → Delete Account (removes all Firestore data within 30 days)
-- **Opt out of analytics** — Profile → Settings → Privacy → toggle off Analytics
-- **Revoke notification access** — Android Settings → Apps → Special app access → Notification access → Zen
-- **Delete backups** — open Google Drive and delete the "Zen Backups" folder
-- **Correct your data** — update your display name and profile via Profile → Edit
+- **Access** â€” view all your data through the app's expense history and profile screens
+- **Export** â€” export your data as CSV or PDF via Profile â†’ Export
+- **Delete** â€” delete your account via Profile â†’ Settings â†’ Delete Account (removes all Firestore data within 30 days)
+- **Opt out of analytics** â€” Profile â†’ Settings â†’ Privacy â†’ toggle off Analytics
+- **Delete backups** â€” open Google Drive and delete the "Zen Backups" folder
+- **Correct your data** â€” update your display name and profile via Profile â†’ Edit
 
 To exercise any right or make a data request, email **privacy@zenvytechno.com**. We will respond within 30 days.
 
 ### GDPR (European Union Users)
 If you are located in the EU or EEA, you have additional rights under the General Data Protection Regulation:
 
-- **Legal basis for processing:** We process your data on the basis of (a) contract performance — to provide the app's core functions; (b) legitimate interests — analytics to improve the app; and (c) consent — optional permissions (notifications, contacts, camera, AI insights)
-- **Right to erasure** ("right to be forgotten") — request deletion of your data at any time
-- **Right to data portability** — request your data in a machine-readable format (use CSV export)
-- **Right to object** — object to processing based on legitimate interests
+- **Legal basis for processing:** We process your data on the basis of (a) contract performance â€” to provide the app's core functions; (b) legitimate interests â€” analytics to improve the app; and (c) consent â€” optional permissions (contacts, camera, AI insights)
+- **Right to erasure** ("right to be forgotten") â€” request deletion of your data at any time
+- **Right to data portability** â€” request your data in a machine-readable format (use CSV export)
+- **Right to object** â€” object to processing based on legitimate interests
 - **International transfers:** Your data is processed on Google's servers, which may be located outside the EU. Google complies with the EU-US Data Privacy Framework and Standard Contractual Clauses
 
 To exercise GDPR rights, email privacy@zenvytechno.com with "GDPR Request" in the subject line.
@@ -173,10 +174,10 @@ To exercise GDPR rights, email privacy@zenvytechno.com with "GDPR Request" in th
 ### CCPA (California Users)
 If you are a California resident, you have rights under the California Consumer Privacy Act:
 
-- **Right to know** — what personal information we collect and how we use it (this document)
-- **Right to delete** — request deletion of your personal information
-- **Right to opt out of sale** — we do not sell your personal information to any third party
-- **Right to non-discrimination** — we will not discriminate against you for exercising your rights
+- **Right to know** â€” what personal information we collect and how we use it (this document)
+- **Right to delete** â€” request deletion of your personal information
+- **Right to opt out of sale** â€” we do not sell your personal information to any third party
+- **Right to non-discrimination** â€” we will not discriminate against you for exercising your rights
 
 To exercise CCPA rights, email privacy@zenvytechno.com with "CCPA Request" in the subject line.
 
@@ -208,6 +209,7 @@ Zen handles financial data. While we follow industry-standard security practices
 
 **Zenvy Cloud**
 Email: privacy@zenvytechno.com
+Support: support@zenvytechno.com
 GitHub: [github.com/zenvy-cloud](https://github.com/zenvy-cloud)
 
 For data requests, GDPR enquiries, or CCPA requests, email privacy@zenvytechno.com. We aim to respond within 30 days.
