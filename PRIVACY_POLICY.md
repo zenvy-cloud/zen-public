@@ -1,6 +1,6 @@
 # Privacy Policy - Zen
 
-**Last updated: March 18, 2026**
+**Last updated: March 29, 2026**
 **App:** Zen (`com.zenvytechno.zen`)
 **Developer:** Zenvytechno
 **Contact:** privacy@zenvytechno.com
@@ -9,7 +9,9 @@
 
 ## 1. Introduction
 
-Zen is a personal finance and productivity app that helps you track expenses, split costs with friends, settle payments, and collaborate on tasks with the people around you. This Privacy Policy explains exactly what data we collect, why we collect it, how we use and share it, and how we protect it.
+Zen is a personal finance and productivity app that helps you track expenses, split costs with friends, settle payments, and collaborate on tasks with the people around you. You can use Zen in **Guest Mode** (no account required) to track personal expenses, or create an account to unlock shared expenses, split bills with friends, and collaborate on tasks.
+
+This Privacy Policy explains exactly what data we collect, why we collect it, how we use and share it, and how we protect it.
 
 We built Zen on a simple principle: **your data belongs to you**. We collect only what is necessary to make the app work.
 
@@ -19,29 +21,51 @@ By using Zen, you agree to the practices described in this policy. If you do not
 
 ## 2. Information We Collect
 
-We collect information in the following ways: directly from you when you use the app, automatically through the services we use, and optionally through device permissions you choose to grant.
+We collect information in the following ways: directly from you when you use the app, automatically through the services we use, and optionally through device permissions you choose to grant. **The amount of data collected depends on whether you use Guest Mode or create an account.**
 
-### 2.1 Account Information
-- **Email address** - when you sign up with email/password or Google
-- **Phone number** - used to identify your account and to match you with contacts in split expenses and collaborative tasks
+### 2.1 Guest Mode (No Account)
+
+Guest Mode allows you to use Zen without signing up. In Guest Mode:
+- **No account information is collected.** We do not require email, phone, or name.
+- **Expenses are stored locally on your device only** â€” not synced to our servers.
+- **Shared features are unavailable:** You cannot split expenses with others or create collaborative tasks. When you attempt to enable splits, you will be prompted to sign up.
+- **No analytics or crash reports are sent** from your device in this mode.
+
+Your Guest Mode expenses are deleted when you uninstall the app or clear the app's data.
+
+### 2.2 Account Information (Authenticated Users Only)
+
+When you create an account, we collect:
+- **Email address** - when you sign up with email/password or Google Sign-In
+- **Phone number** - used to identify your account and to match you with contacts in split expenses and collaborative tasks; also used for SMS-based expense entry (optional)
 - **Display name and profile photo** - sourced from your Google account if you sign in with Google, or set by you during onboarding
+- **Unique User ID (UID)** - assigned by Firebase Auth to identify your account
 
-### 2.2 Financial Data
+### 2.3 Guest-to-Account Conversion
+
+When you convert from Guest Mode to an authenticated account:
+- Your existing Guest Mode expenses (stored locally) are migrated to your account in Firebase Firestore
+- The migration happens automatically the first time you sign in
+- After migration, these expenses are synced to our servers under your account and subject to the data retention and sharing rules in Section 7
+
+### 2.4 Financial Data (Authenticated Users Only)
+
 - **Expenses** - amount, merchant/description, category, date, payment method, notes, receipt photos
 - **Splits** - who paid, how much each person owes, settlement status
 - **Settlements** - payment records between you and your contacts
 
-This data is stored locally on your device and synced to Firebase Firestore under your account.
+This data is stored locally on your device in an SQLite database and synced to Firebase Firestore under your account for backup and multi-device access.
 
-### 2.3 Task Data
+### 2.5 Task Data (Authenticated Users Only)
+
 - **Tasks** - title, description, status, priority, due date, assignee, and checklist items
 - **Task activity** - who created a task, who it is assigned to, and status changes (accepted, started, completed, declined)
 
 Task data is stored in Firebase Firestore and shared between participants (creator and assignee) to enable real-time collaboration.
 
-### 2.4 Expense Entry Methods
+### 2.6 Expense Entry Methods
 
-Zen supports several ways to log an expense. In every method **you initiate the action**, you see the result before it is saved, and raw source data (SMS text, receipt image, bank statement) is never sent to our servers — only the structured expense fields you confirm are stored.
+Zen supports several ways to log an expense. In every method **you initiate the action**, you see the result before it is saved, and raw source data (SMS text, receipt image, bank statement) is never sent to our servers â€” only the structured expense fields you confirm are stored.
 
 - **Manual entry** - you fill in the amount, merchant, category, and other fields directly in the app
 - **SMS paste** - you open the app and paste a bank transaction SMS yourself; the app parses it and you confirm the result
@@ -50,13 +74,16 @@ Zen supports several ways to log an expense. In every method **you initiate the 
 - **Bank statement import (CSV or PDF)** - you upload a bank statement file from your device; transactions are parsed locally and you review them before import; PDF passwords (if any) are used on-device only and never stored
 - **File share** - you share a PDF or image from another app; Zen opens it in the import review screen for your confirmation
 
-### 2.5 Contacts *(optional - requires Contacts permission)*
-Contact names and phone numbers are read from your device to help you select friends when splitting an expense or assigning a task. When you add a contact as a participant in a split or task, their name and phone number are saved to our backend to enable matching and collaboration features. Contacts are not bulk-uploaded — only contacts you explicitly interact with inside the app are stored on our servers.
+### 2.7 Contacts *(optional - requires Contacts permission; authenticated users only)*
 
-### 2.6 Camera and Photos *(optional - requires Camera permission)*
-If you photograph receipts or attach images to expenses, those images are stored locally on your device. If you enable backup, images are stored in your own Google Drive — not on our servers. OCR (text extraction) is performed on-device; images are not uploaded to us.
+Contact names and phone numbers are read from your device to help you select friends when splitting an expense or assigning a task. When you add a contact as a participant in a split or task, their name and phone number are saved to our backend to enable matching and collaboration features. Contacts are not bulk-uploaded â€” only contacts you explicitly interact with inside the app are stored on our servers.
 
-### 2.7 Usage Analytics
+### 2.8 Camera and Photos *(optional - requires Camera permission)*
+
+If you photograph receipts or attach images to expenses, those images are stored locally on your device. If you enable backup (authenticated users only), images are stored in your own Google Drive â€” not on our servers. OCR (text extraction) is performed on-device; images are not uploaded to us.
+
+### 2.9 Usage Analytics (Authenticated Users Only)
+
 We collect anonymous, aggregated usage events via Firebase Analytics:
 - Screen views and navigation flows
 - Feature usage (expense added, split created, settlement completed, task created)
@@ -65,28 +92,32 @@ We collect anonymous, aggregated usage events via Firebase Analytics:
 
 Analytics help us understand how the app is used and where to focus improvements. The scope of analytics may expand as the app grows; this policy will be updated to reflect any meaningful changes.
 
-### 2.8 Device Information
+**Guest Mode users do not send analytics to our servers.**
+
+### 2.10 Device Information (Authenticated Users Only)
+
 Firebase automatically collects basic device information (device model, OS version, app version, language) to provide analytics and improve app stability. This is not linked to your personal identity.
 
-### 2.9 Push Notification Tokens
+### 2.11 Push Notification Tokens (Authenticated Users Only)
+
 Your Firebase Cloud Messaging (FCM) device token is stored in Firestore to deliver push notifications (settlement reminders, task assignments, task status updates) to your device.
 
 ---
 
 ## 3. How We Use Your Information
 
-| Information | Purpose |
-|---|---|
-| Email / phone / name | Create and manage your account; identify you in shared expenses and tasks |
-| Financial data (expenses, splits) | Core app functionality - tracking, splitting, settling |
-| Task data | Core app functionality - creating, assigning, and tracking collaborative tasks |
-| SMS text / receipt image / bank statement (user-initiated) | Parse expense details (amount, merchant, date) that you choose to log; raw source data stays on-device |
-| Contacts | Suggest friends when creating a split or assigning a task; store participants you interact with |
-| Receipt photos | Attach to expenses; OCR auto-fill of amount and merchant |
-| Analytics events | Understand how features are used; improve the app |
-| Device info | Crash reporting and stability improvements |
-| FCM token | Deliver settlement reminders, task assignment alerts, and status notifications |
-| Expense history (anonymised, opt-in) | Generate AI spending insights via Google Gemini when you request it |
+| Information | Purpose | Who |
+|---|---|---|
+| Email / phone / name | Create and manage your account; identify you in shared expenses and tasks | Authenticated users |
+| Financial data (expenses, splits) | Core app functionality - tracking, splitting, settling | All users (guest: local; authenticated: synced) |
+| Task data | Core app functionality - creating, assigning, and tracking collaborative tasks | Authenticated users only |
+| SMS text / receipt image / bank statement (user-initiated) | Parse expense details (amount, merchant, date) that you choose to log; raw source data stays on-device | All users |
+| Contacts | Suggest friends when creating a split or assigning a task; store participants you interact with | Authenticated users only |
+| Receipt photos | Attach to expenses; OCR auto-fill of amount and merchant | All users |
+| Analytics events | Understand how features are used; improve the app | Authenticated users only |
+| Device info | Crash reporting and stability improvements | Authenticated users only |
+| FCM token | Deliver settlement reminders, task assignment alerts, and status notifications | Authenticated users only |
+| Expense history (anonymised, opt-in) | Generate AI spending insights via Google Gemini when you request it | Authenticated users only |
 
 We do **not** use your data for advertising, profiling, or selling to third parties.
 
@@ -97,20 +128,20 @@ We do **not** use your data for advertising, profiling, or selling to third part
 We do not sell your personal data. We share data only in the following limited circumstances:
 
 **With other Zen users you choose to interact with:**
-When you split an expense, settle a payment, or collaborate on a task with a contact, your display name, phone number, and the relevant expense or task details are shared with that contact within the app.
+When you split an expense, settle a payment, or collaborate on a task with a contact, your display name, phone number, and the relevant expense or task details are shared with that contact within the app. This applies to authenticated users only.
 
 **With our service providers (processors):**
 We use the following third-party services that process data on our behalf. Each is contractually bound to use your data only to provide their service to us.
 
-| Service | Provider | Data shared | Purpose |
-|---|---|---|---|
-| Firebase Auth | Google | Email, phone, UID | Authentication |
-| Firebase Firestore | Google | Expenses, splits, tasks, user profile, contacts | Cloud data sync |
-| Firebase Analytics | Google | Anonymous usage events | App analytics |
-| Firebase Cloud Messaging | Google | FCM device token | Push notifications |
-| Google Sign-In | Google | Email, name, profile photo | Authentication |
-| Google Drive API | Google | AES-256 encrypted backup files | Backup storage in your Drive |
-| Google Gemini API | Google | Anonymised expense amounts and categories | AI spending insights (opt-in only) |
+| Service | Provider | Data shared | Purpose | Users |
+|---|---|---|---|---|
+| Firebase Auth | Google | Email, phone, UID | Authentication | Authenticated only |
+| Firebase Firestore | Google | Expenses, splits, tasks, user profile, contacts | Cloud data sync | Authenticated only |
+| Firebase Analytics | Google | Anonymous usage events | App analytics | Authenticated only |
+| Firebase Cloud Messaging | Google | FCM device token | Push notifications | Authenticated only |
+| Google Sign-In | Google | Email, name, profile photo | Authentication | Authenticated only |
+| Google Drive API | Google | AES-256 encrypted backup files | Backup storage in your Drive | Authenticated only |
+| Google Gemini API | Google | Anonymised expense amounts and categories | AI spending insights (opt-in only) | Authenticated only |
 
 Links to their privacy policies: [Firebase](https://firebase.google.com/support/privacy) - [Google](https://policies.google.com/privacy) - [Gemini API](https://ai.google.dev/gemini-api/terms)
 
@@ -137,10 +168,11 @@ We take the following measures to protect your data:
 
 | Mechanism | Detail |
 |---|---|
+| On-device storage | Guest Mode expenses stored in SQLite within Android's app sandbox; Authenticated user's local SQLite also sandboxed |
 | Backup encryption | AES-256-GCM encryption applied before data leaves your device; key stored in Android Keystore |
 | Transport security | All network traffic uses HTTPS/TLS; cleartext traffic is disabled |
 | Firebase security rules | Firestore rules enforce that users can only access their own data |
-| App sandbox | On-device SQLite database is protected by Android's app sandbox |
+| Authentication security | Password stored securely by Firebase; Google Sign-In uses OAuth 2.0 |
 
 We do not claim that any system is 100% secure. If you discover a security issue, please report it to privacy@zenvytechno.com.
 
@@ -148,9 +180,14 @@ We do not claim that any system is 100% secure. If you discover a security issue
 
 ## 7. Data Retention
 
+**Guest Mode:**
+- **On-device data:** Deleted when you uninstall the app, clear app data, or explicitly sign up (data is migrated to your account)
+- **Server storage:** No data is stored on our servers
+
+**Authenticated Account:**
 - **Active account:** Data is retained as long as your account exists
 - **Deleted account:** Firestore data is deleted within 30 days of account deletion
-- **On-device data:** Deleted when you uninstall the app or clear app data
+- **On-device data:** Deleted when you uninstall the app or clear app data; can also be manually deleted per expense
 - **Analytics:** Anonymised event data retained for 14 months (Firebase default)
 - **Google Drive backups:** Retained in your Drive until you delete them; we have no access
 
@@ -160,6 +197,11 @@ We do not claim that any system is 100% secure. If you discover a security issue
 
 You have the following rights regardless of where you are located:
 
+### Guest Mode Users
+- **Delete data:** Uninstall the app or clear app data to delete all local expenses
+- **Privacy:** No account data exists on our servers while in Guest Mode
+
+### Authenticated Users
 - **Access** - view all your data through the app's expense history and profile screens
 - **Export** - export your data as CSV or PDF via Profile -> Export
 - **Delete** - delete your account via Profile -> Settings -> Delete Account (removes all Firestore data within 30 days)
@@ -221,7 +263,7 @@ Email: privacy@zenvytechno.com
 Support: support@zenvytechno.com
 GitHub: [github.com/zenvy-cloud](https://github.com/zenvy-cloud)
 
-For data requests, GDPR enquiries, or CCPA requests, email privacy@zenvytechno.com. We aim to respond within 30 days.
+For data requests, GDPR enquiries, CCPA requests, or security disclosures, email privacy@zenvytechno.com. We aim to respond within 30 days.
 
 ---
 
