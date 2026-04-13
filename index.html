@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- PASTE YOUR GOOGLE SEARCH CONSOLE VERIFICATION TAG HERE -->
+  <!-- Example: <meta name="google-site-verification" content="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" /> -->
+
+  <title>Zen — Smart Expense Tracker</title>
+  <meta name="description" content="Zen is a smart personal finance app that automatically tracks your expenses from SMS, Gmail, and receipts. Split bills, manage tasks, and gain AI-powered insights." />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #4f46e5;
+      --primary-light: #6366f1;
+      --surface: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--surface);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+
+    .nav {
+      max-width: 960px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      margin-left: 24px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: var(--primary); }
+
+    .hero {
+      max-width: 960px;
+      margin: 80px auto 60px;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span { color: var(--primary); }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 36px;
+    }
+
+    .badges {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--text);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: opacity .15s;
+    }
+
+    .badge:hover { opacity: .85; }
+    .badge.outline { background: #fff; color: var(--text); border: 1.5px solid var(--border); }
+
+    .features {
+      max-width: 960px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+    }
+
+    .feature {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 24px;
+    }
+
+    .feature-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .feature h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .feature p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #fff;
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 12px;
+    }
+
+    footer a:hover { text-decoration: underline; }
+
+    .footer-links { margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="nav">
+      <a href="/" class="logo">Zen</a>
+      <div class="nav-links">
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        <a href="mailto:privacy@zenvytechno.com">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Track expenses<br /><span>effortlessly with Zen</span></h1>
+      <p>
+        Zen automatically detects transactions from your SMS, Gmail, and receipts —
+        so you always know where your money goes, without lifting a finger.
+      </p>
+      <div class="badges">
+        <a class="badge" href="#" aria-label="Download on the App Store">
+          🍎 &nbsp;App Store
+        </a>
+        <a class="badge outline" href="#" aria-label="Get it on Google Play">
+          ▶ &nbsp;Google Play
+        </a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature">
+        <div class="feature-icon">📩</div>
+        <h3>Auto SMS &amp; Email Scan</h3>
+        <p>Bank alerts and payment emails are parsed instantly into clean expense records.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📷</div>
+        <h3>Receipt OCR</h3>
+        <p>Snap a photo of any receipt and Zen extracts the amount, merchant, and date.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🤝</div>
+        <h3>Split &amp; Settle</h3>
+        <p>Split expenses with friends, track who owes what, and settle balances in one tap.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🧠</div>
+        <h3>AI Insights</h3>
+        <p>Gemini-powered forecasts and natural language search surface spending patterns instantly.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="mailto:privacy@zenvytechno.com">Contact</a>
+    </div>
+    <div>&copy; 2025 Zenvy Technologies. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Zen</title>
+  <meta name="description" content="Privacy Policy for the Zen expense tracking app." />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #4f46e5;
+      --surface: #f8fafc;
+      --text: #0f172a;
+      --muted: #64748b;
+      --border: #e2e8f0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--surface);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+
+    .nav {
+      max-width: 800px;
+      margin: 0 auto;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      text-decoration: none;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: 48px auto 80px;
+      padding: 0 24px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 48px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .updated {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 700;
+      margin: 36px 0 12px;
+      color: var(--text);
+    }
+
+    p { margin-bottom: 16px; color: #334155; }
+
+    ul {
+      margin: 0 0 16px 20px;
+      color: #334155;
+    }
+
+    ul li { margin-bottom: 8px; }
+
+    a { color: var(--primary); }
+
+    strong { color: var(--text); }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: #fff;
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="nav">
+      <a href="/" class="logo">Zen</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="content">
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: April 2025</p>
+
+      <p>
+        Zen ("we", "our", or "us") is a personal finance application developed by Zenvy Technologies.
+        This Privacy Policy explains how we collect, use, and protect your information when you use
+        the Zen app. By using Zen, you agree to the practices described here.
+      </p>
+
+      <h2>1. Operating Modes</h2>
+      <p>Zen operates in two modes with different data practices:</p>
+      <ul>
+        <li>
+          <strong>Guest Mode</strong> — No account is required. Expenses stay entirely on your device.
+          No email, phone number, or name is collected. No data is sent to our servers.
+        </li>
+        <li>
+          <strong>Authenticated Mode</strong> — Requires an email address, phone number, and display
+          name to enable shared features such as expense splitting and task collaboration. Data is
+          stored in Firebase Firestore.
+        </li>
+      </ul>
+
+      <h2>2. Information We Collect</h2>
+      <p>When you create an account and use Zen in Authenticated Mode, we may collect:</p>
+      <ul>
+        <li><strong>Account information</strong> — email address, phone number, display name</li>
+        <li><strong>Expense data</strong> — amounts, merchants, categories, dates, and transaction references you confirm</li>
+        <li><strong>Task data</strong> — task titles, assignments, due dates, and status changes</li>
+        <li><strong>Device information</strong> — device type, operating system version, for crash diagnostics</li>
+      </ul>
+      <p>
+        <strong>Raw source data is never sent to our servers.</strong> SMS text bodies, receipt images,
+        and bank statement files are processed on-device only. Only the structured expense fields you
+        confirm are stored.
+      </p>
+
+      <h2>3. Gmail Access</h2>
+      <p>
+        If you enable Gmail Scanning, Zen requests the <code>gmail.readonly</code> OAuth scope to
+        read transactional emails from your connected Google account. This access is used solely to
+        detect bank and payment alerts and convert them into expense candidates for your review.
+      </p>
+      <ul>
+        <li>Email bodies are processed on-device and never transmitted to our servers.</li>
+        <li>Only the structured expense data you explicitly confirm is stored.</li>
+        <li>You can revoke this access at any time via Google Account settings or by disabling Gmail Scanning in the app.</li>
+        <li>We do not read, store, or share the content of any email other than extracting financial transaction amounts, dates, and merchant names.</li>
+      </ul>
+      <p>
+        Our use of Google user data complies with the
+        <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">
+          Google API Services User Data Policy
+        </a>, including the Limited Use requirements.
+      </p>
+
+      <h2>4. Third-Party Services</h2>
+      <p>Zen uses the following Google and Firebase services:</p>
+      <ul>
+        <li>Firebase Authentication — secure sign-in</li>
+        <li>Cloud Firestore — cloud storage for tasks, shared expenses, and user profiles</li>
+        <li>Firebase Analytics — anonymised usage analytics (opt-out available in Settings)</li>
+        <li>Firebase Cloud Messaging — push notifications</li>
+        <li>Firebase Crashlytics — crash reporting (opt-out available in Settings)</li>
+        <li>Google Gemini API — AI-powered insights and natural language search (data is anonymised before processing)</li>
+      </ul>
+      <p>
+        Each service is contractually bound to use your data only to provide their service to us and
+        in accordance with their own privacy policies.
+      </p>
+
+      <h2>5. Data Sharing</h2>
+      <p>We do not sell, rent, or share your personal data with third parties for marketing purposes.
+      Data is shared only:</p>
+      <ul>
+        <li>With other Zen users you explicitly invite to a shared expense or task</li>
+        <li>With service providers listed above, solely to operate the app</li>
+        <li>When required by law</li>
+      </ul>
+
+      <h2>6. Your Rights</h2>
+      <p>You have the right to:</p>
+      <ul>
+        <li><strong>Access</strong> — export all your expense data as CSV or PDF from Settings → Data Backup &amp; Import</li>
+        <li><strong>Delete</strong> — delete your account from the app; server data is removed within 30 days</li>
+        <li><strong>Opt out</strong> — disable analytics and crash reporting in Settings → Smart AI Features</li>
+        <li><strong>Portability</strong> — export your data at any time in machine-readable format</li>
+      </ul>
+      <p>
+        EU residents (GDPR) and California residents (CCPA) may exercise additional rights by
+        contacting us at <a href="mailto:privacy@zenvytechno.com">privacy@zenvytechno.com</a>.
+      </p>
+
+      <h2>7. Data Retention</h2>
+      <p>
+        We retain your data for as long as your account is active. Upon account deletion, personal
+        data is removed from our servers within 30 days. Anonymised, aggregated analytics data may
+        be retained indefinitely.
+      </p>
+
+      <h2>8. Security</h2>
+      <p>
+        We use industry-standard security measures including HTTPS encryption in transit and
+        Firebase security rules to restrict data access. However, no method of transmission over
+        the internet is 100% secure.
+      </p>
+
+      <h2>9. Children's Privacy</h2>
+      <p>
+        Zen is not directed at children under 13. We do not knowingly collect personal information
+        from children. If you believe a child has provided us with personal data, contact us and
+        we will delete it promptly.
+      </p>
+
+      <h2>10. Changes to This Policy</h2>
+      <p>
+        We may update this policy from time to time. We will notify you of significant changes via
+        the app or email. The "Last updated" date at the top reflects the most recent revision.
+        Continued use of Zen after changes constitutes acceptance of the updated policy.
+      </p>
+
+      <h2>11. Contact</h2>
+      <p>
+        For privacy-related questions, data requests, or security issues, contact us at:<br />
+        <a href="mailto:privacy@zenvytechno.com">privacy@zenvytechno.com</a>
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    <a href="/">Home</a>
+    <a href="/privacy-policy.html">Privacy Policy</a>
+    <a href="mailto:privacy@zenvytechno.com">Contact</a>
+    <div style="margin-top: 12px">&copy; 2025 Zenvy Technologies. All rights reserved.</div>
+  </footer>
+
+</body>
+</html>
